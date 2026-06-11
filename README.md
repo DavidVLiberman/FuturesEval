@@ -109,6 +109,14 @@ For real validation, export 1–5 minute MES bars (6+ months) from
 NinjaTrader / Tradovate / TradingView to CSV with columns
 `timestamp,open,high,low,close,volume` and use `--data csv`.
 
+NinjaTrader users: export each quarterly contract via Tools → Historical
+Data → Export (type "Minute"), then convert and stitch in one step:
+
+```bash
+python scripts/convert_ninjatrader.py MES_12-25.txt MES_03-26.txt MES_06-26.txt -o mes_bars.csv
+python scripts/run_backtest.py --data csv --csv mes_bars.csv
+```
+
 ## Repo layout
 
 ```
